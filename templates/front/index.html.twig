@@ -1,20 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello {{ controller_name }}!{% endblock %}
+{% block title %}{{ pageTitle }}{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'src/Controller/FrontController.php'|file_link(0) }}">src/Controller/FrontController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'templates/front/index.html.twig'|file_link(0) }}">templates/front/index.html.twig</a></code></li>
-    </ul>
-</div>
+    {% block header %}
+        {% if pageTitle %}
+            <header class="site-header">
+                <div class="container">
+                    <h1 class="text-center">{{ pageTitle }}</h1>
+                </div>
+            </header>
+        {% endif %}
+    {% endblock %}
+    <div class="container">
+        {% if pageMessage and pageTitle %}
+            <h2 class="text-center mt-5">
+                {{ pageMessage }}
+                {{ pageTitle }}!
+            </h2>
+        {% endif %}
+    </div>
+    {% block footer %}
+        <footer class="site-footer" style="padding: 150px 0">
+            <div class="container">
+                <div class="row text-center">
+                    {% if copyrightText %}
+                        <div class="col-md-4 copyright">
+                            <span>
+                                {{ copyrightText }}
+                                {{ "now"|date('Y') }}
+                            </span>
+                        </div>
+                    {% endif %}
+                    {% if authorName %}
+                    <div class="col-md-4 author-name">
+                        <span>{{ authorName }}</span>
+                    </div>
+                    {% endif %}
+                    {% if ghText %}
+                    <div class="col-md-4 some-text">
+                        <span>{{ ghText }}</span>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </footer>
+    {% endblock %}
 {% endblock %}

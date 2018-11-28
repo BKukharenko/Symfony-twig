@@ -13,7 +13,11 @@ class FrontController extends AbstractController
     public function index()
     {
         return $this->render('front/index.html.twig', [
-            'controller_name' => 'FrontController',
+            'pageTitle' => 'Homepage',
+            'pageMessage' => 'Welcome to',
+            'copyrightText' => 'Copyright, ',
+            'authorName' => 'Bohdan Kukharenko',
+            'ghText' => 'Advanced PHP'
         ]);
     }
 }
