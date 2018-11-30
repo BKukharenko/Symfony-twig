@@ -3,15 +3,15 @@
 {% block title %}{{ pageTitle }}{% endblock %}
 
 {% block body %}
-    {% block header %}
-        {% if pageTitle %}
-            <header class="site-header">
-                <div class="container">
+    <header class="site-header">
+        <div class="container">
+            {% block header %}
+                {% if pageTitle %}
                     <h1 class="text-center">{{ pageTitle }}</h1>
-                </div>
-            </header>
-        {% endif %}
-    {% endblock %}
+                {% endif %}
+            {% endblock %}
+        </div>
+    </header>
     <div class="container">
         {% if pageMessage and pageTitle %}
             <h2 class="text-center mt-5">
@@ -20,10 +20,10 @@
             </h2>
         {% endif %}
     </div>
-    {% block footer %}
-        <footer class="site-footer" style="padding: 150px 0">
-            <div class="container">
-                <div class="row text-center">
+    <footer class="site-footer" style="padding: 150px 0">
+        <div class="container">
+            <div class="row text-center">
+                {% block footer %}
                     {% if copyrightText %}
                         <div class="col-md-4 copyright">
                             <span>
@@ -33,17 +33,18 @@
                         </div>
                     {% endif %}
                     {% if authorName %}
-                    <div class="col-md-4 author-name">
-                        <span>{{ authorName }}</span>
-                    </div>
+                        <div class="col-md-4 author-name">
+                            <span>{{ authorName }}</span>
+                        </div>
                     {% endif %}
                     {% if ghText %}
-                    <div class="col-md-4 some-text">
-                        <span>{{ ghText }}</span>
-                    </div>
+                        <div class="col-md-4 some-text">
+                            <span>{{ ghText }}</span>
+                        </div>
                     {% endif %}
-                </div>
+                {% endblock %}
             </div>
-        </footer>
-    {% endblock %}
+        </div>
+    </footer>
+
 {% endblock %}
