@@ -3,27 +3,29 @@
 {% block title %}{{ pageTitle }}{% endblock %}
 
 {% block body %}
-    <header class="site-header">
-        <div class="container">
-            {% block header %}
+    {% block header %}
+        <header class="site-header">
+            <div class="container">
                 {% if pageTitle %}
                     <h1 class="text-center">{{ pageTitle }}</h1>
                 {% endif %}
-            {% endblock %}
-        </div>
-    </header>
-    <div class="container">
-        {% if pageMessage and pageTitle %}
-            <h2 class="text-center mt-5">
-                {{ pageMessage }}
-                {{ pageTitle }}!
-            </h2>
-        {% endif %}
-    </div>
-    <footer class="site-footer" style="padding: 150px 0">
+            </div>
+        </header>
+    {% endblock %}
+    {% block pageContent %}
         <div class="container">
-            <div class="row text-center">
-                {% block footer %}
+            {% if pageMessage and pageTitle %}
+                <h2 class="text-center mt-5">
+                    {{ pageMessage }}
+                    {{ pageTitle }}!
+                </h2>
+            {% endif %}
+        </div>
+    {% endblock %}
+    {% block footer %}
+        <footer class="site-footer" style="padding: 150px 0">
+            <div class="container">
+                <div class="row text-center">
                     {% if copyrightText %}
                         <div class="col-md-4 copyright">
                             <span>
@@ -42,9 +44,9 @@
                             <span>{{ ghText }}</span>
                         </div>
                     {% endif %}
-                {% endblock %}
+                </div>
             </div>
-        </div>
-    </footer>
+        </footer>
+    {% endblock %}
 
 {% endblock %}
