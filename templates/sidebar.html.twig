@@ -1,0 +1,13 @@
+{% set popularPost = random(posts) %}
+
+<div class="popular-post-container">
+    <h4>
+        {{ popularPost.title }}
+    </h4>
+    <p>
+        {{ popularPost.body }}
+    </p>
+    <time datetime="{{ popularPost.post_date }}">
+        {{ popularPost.post_date }}
+    </time>
+</div>
