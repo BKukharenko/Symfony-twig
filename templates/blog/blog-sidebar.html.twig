@@ -1,0 +1,39 @@
+{% extends 'blog/blog.html.twig' %}
+
+{% block pageContent %}
+    <div class="container">
+        {% if pageMessage and pageTitle %}
+            <h2 class="text-center mt-5">
+                {{ pageMessage|upper }}
+                {{ pageTitle|upper }}!
+            </h2>
+        {% endif %}
+        <div class="row">
+            <div class="col-md-8">
+                {% if posts %}
+                    <ul class="posts">
+                        {% for post in posts %}
+                            <li style="list-style: none; border-bottom: 1px solid black; margin-bottom: 20px">
+                                <h3>
+                                    {{ post.title }}
+                                </h3>
+                                <p>
+                                    {{ post.body }}
+                                </p>
+                                <time datetime="{{ post.post_date }}">
+                                    {{ post.post_date }}
+                                </time>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="col-md-4">
+                <h3 style="font-weight: 700">
+                    Most Popular Post
+                </h3>
+                {% include 'sidebar.html.twig' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

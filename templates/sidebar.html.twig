@@ -1,0 +1,16 @@
+{% set popularPost = random(posts) %}
+
+<div class="popular-post-container">
+    <h4>
+        {{ popularPost.title }}
+    </h4>
+    <p>
+        {{ popularPost.body }}
+    </p>
+    <time datetime="{{ popularPost.post_date }}">
+        {{ popularPost.post_date }}
+        <p>
+            Server time zone:<time> {{ serverTimeZone() }}</time>
+        </p>
+    </time>
+</div>
